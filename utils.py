@@ -21,7 +21,7 @@ def process_tweet(tweet):
     tweet = re.sub(r'\$\w*', '', tweet)
     # remove old style retweet text "RT"
     tweet = re.sub(r'^RT[\s]+', '', tweet)
-    # remove hyperlinks    
+    # remove hyperlinks
     tweet = re.sub(r'https?://[^\s\n\r]+', '', tweet)
     # remove hashtags
     # only removing the hash # sign from the word
@@ -33,10 +33,8 @@ def process_tweet(tweet):
 
     tweets_clean = []
     for word in tweet_tokens:
-        if (word not in stopwords_english and  # remove stopwords
-                word not in string.punctuation):  # remove punctuation
-            # tweets_clean.append(word)
-            stem_word = stemmer.stem(word)  # stemming word
+        if (word not in string.punctuation):
+            stem_word = stemmer.stem(word)
             tweets_clean.append(stem_word)
 
     return tweets_clean
